@@ -6,6 +6,16 @@ const client = new Discord.Client();
 
 /*
 
+ONLY RECOMEND CHANGES WHEN THEY ARE ISSUES
+
+To Commit With Us, Contact BarredGalaxy on his Discord! [BarredGalaxy (Deprived Edition)]
+________________________COMMITERS!_____________________________
+(c) BarredGalaxy, NOV, Omanges, CapitanArc, Discade, DiscadeBOT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+These people are the best.
+
+lol
+
 GITHUB! >>> 
 https://github.com/DiscadeBOT
 OUR OFFICIAL BOT ACCOUNT!
