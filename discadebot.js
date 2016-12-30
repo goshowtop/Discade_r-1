@@ -6,6 +6,10 @@ const client = new Discord.Client();
 
 /*
 
+GITHUB! >>> 
+https://github.com/DiscadeBOT
+OUR OFFICIAL BOT ACCOUNT!
+
 Discade! A Bot By BarredGalaxy!
 ®BarredGalaxy
 
