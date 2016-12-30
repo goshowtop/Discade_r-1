@@ -2,8 +2,11 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
-// ^^ constants
+/* ^^ constants
 
+CaptainArc
+
+*/
 /*
 
 ONLY RECOMEND CHANGES WHEN THEY ARE ISSUES
