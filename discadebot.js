@@ -6,9 +6,6 @@ const client = new Discord.Client();
 
 CaptainArc
 
-*/
-/*
-
 ONLY RECOMEND CHANGES WHEN THEY ARE ISSUES
 
 To Commit With Us, Contact BarredGalaxy on his Discord! [BarredGalaxy (Deprived Edition)]
@@ -81,6 +78,9 @@ client.on('message', msg => {
 // If Success
 
   if(msg.author.bot) return;
+  if (!msg.content.contains("nights of valor") && !msg.content.contains("nov"))
+    client.sendMessage(message.channel, 'Move To #offtopic Please');
+  }
 
 // ping
 
