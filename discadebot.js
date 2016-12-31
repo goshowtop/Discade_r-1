@@ -67,12 +67,12 @@ client.on("ready", () => {
 client.on('message', msg => {
 
 // If Success
-
+/* // Not needed
   if(msg.author.bot) return;
   if (!msg.content.indexOf('N', 0) && !msg.content.indexOf('O', 1) && !msg.content.indexOf('V', 2)) {
     client.channel.sendMessage(msg.channel, "Move To #offtopic Please");
   }
-  
+*/  
 
 // ping
 
@@ -135,4 +135,4 @@ client.on('message', msg => {
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('in your dream bucko')
+client.login('in your dreams bucko')
