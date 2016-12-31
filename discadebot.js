@@ -3,30 +3,21 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 /* ^^ constants
-
 CaptainArc
-
 ONLY RECOMEND CHANGES WHEN THEY ARE ISSUES
-
 To Commit With Us, Contact BarredGalaxy on his Discord! [BarredGalaxy (Deprived Edition)]
 ________________________COMMITERS!_____________________________
 (c) BarredGalaxy, NOV, Omanges, CapitanArc, Discade, DiscadeBOT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 These people are the best.
-
 lol
-
 GITHUB! >>> 
 https://github.com/DiscadeBOT
 OUR OFFICIAL BOT ACCOUNT!
-
 Discade! A Bot By BarredGalaxy!
 ®BarredGalaxy
-
 ALL SCRIPTS INTENDED FOR THE NIGHTS OF VALOR SERVER ONLY
-
 Omanges, Please Please Please Don't Take This
-
 */
 
 // Client Intro
@@ -78,9 +69,10 @@ client.on('message', msg => {
 // If Success
 
   if(msg.author.bot) return;
-  if (!msg.content.contains("nights of valor") && !msg.content.contains("nov"))
-    client.sendMessage(message.channel, 'Move To #offtopic Please');
+  if (!msg.content.indexOf('N', 0) && !msg.content.indexOf('O', 1) && !msg.content.indexOf('V', 2)) {
+    client.channel.sendMessage(msg.channel, "Move To #offtopic Please");
   }
+  
 
 // ping
 
@@ -97,7 +89,7 @@ client.on('message', msg => {
 
     // Replys with Intro Message
 
-  	msg.reply('**Welcome to Nights of Valor Discord!**');
+    msg.reply('**Welcome to Nights of Valor Discord!**');
 
 // Individual Help.
 
@@ -121,7 +113,7 @@ client.on('message', msg => {
 
   // message
 
-  	msg.reply('Markdowns: ` *Italics* **Bold** ***Italic & Bold*** __Underline__ ~~Strikethrough~~ `');
+    msg.reply('Markdowns: ` *Italics* **Bold** ***Italic & Bold*** __Underline__ ~~Strikethrough~~ `');
 
 // Text Chat
 
@@ -129,7 +121,7 @@ client.on('message', msg => {
 
     // Replys With Help
 
-  	msg.reply('Text Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404368-Text-Chat');
+    msg.reply('Text Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404368-Text-Chat');
 
 // Voice Help
 
@@ -137,10 +129,10 @@ client.on('message', msg => {
 
     // Replys With Help
 
-  	msg.reply('Voice Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404367-Voice-Chat');
+    msg.reply('Voice Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404367-Voice-Chat');
 
 });
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('i see you tryna steal')
+client.login('in your dream bucko')
