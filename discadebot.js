@@ -95,8 +95,9 @@ client.on('message', msg => {
   }
 
   //invites.
-  if msg.content.startsWith(prefix + "invite") {
-        bot.sendMessage(message, "Here is the invite link: " + invitelink);
+  if (msg.content.startsWith(prefix + "invite") 
+    msg.reply("Here is the invite link: " + invitelink);
+  );
 // Help Content
 
   if (msg.content.startsWith("help")) {
@@ -150,4 +151,4 @@ client.on('message', msg => {
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('Nope!')
+client.login('MjY0Mjc1NzIxMTM4OTk1MjA1.C0h1qg.1XGscybUWwrr0KMlkhK5w5kz2UA')
