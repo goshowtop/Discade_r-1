@@ -2,6 +2,15 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client();
 
+//edit the prefix here
+const prefix = "!"
+
+//edit the server here
+const server = "Nights Of Valor"
+
+//invite link
+const invitelink = "https://discord.gg/4suNThV"
+
 /* ^^ constants
 CaptainArc
 ONLY RECOMEND CHANGES WHEN THEY ARE ISSUES
@@ -46,7 +55,7 @@ client.on('ready', () => {
 
   // Thank You
 
-  console.log(`Thank You for using DISCADE.!`);
+  console.log(`Thank You for using DISCADE For ` + server);
 
   // end
 
@@ -67,8 +76,9 @@ client.on("ready", () => {
 client.on('message', msg => {
 
 // If Success
-/* // Not needed
+
   if(msg.author.bot) return;
+/* // Not needed
   if (!msg.content.indexOf('N', 0) && !msg.content.indexOf('O', 1) && !msg.content.indexOf('V', 2)) {
     client.channel.sendMessage(msg.channel, "Move To #offtopic Please");
   }
@@ -76,40 +86,45 @@ client.on('message', msg => {
 
 // ping
 
-  if (msg.content.startsWith("ping")) {
+  if (msg.content.startsWith(prefix + "ping")) {
 
 // pong 
 
     msg.reply('Pong!');
 
   }
+
+  //invites.
+  if msg.content.startsWith(prefix + "invite") {
+        bot.sendMessage(message, "Here is the invite link: " + invitelink);
 // Help Content
 
   if (msg.content.startsWith("help")) {
 
     // Replys with Intro Message
 
-    msg.reply('**Welcome to Nights of Valor Discord!**');
+    msg.reply('**Welcome' + server + 's Discord!**');
 
 // Individual Help.
 
     // markdown help
 
-    msg.channel.sendMessage('To recive help with Discord Markdowns, Type `markdownhelp`');
+    msg.channel.sendMessage('To recive help with Discord Markdowns, Type `markdownhelp`.');
 
     // Voice help
 
-    msg.channel.sendMessage('To recive help with Discord Voice Chat, Type `voicehelp`');
+    msg.channel.sendMessage('To recive help with Discord Voice Chat, Type `voicehelp`.');
 
     // Text Help
 
-    msg.channel.sendMessage('To recive help with Discord Text Channels, Type `texthelp`');
+    msg.channel.sendMessage('To recive help with Discord Text Channels, Type `texthelp`.');
 
   }
 
 // Markdown
 
   if (msg.content.startsWith("markdownhelp")) 
+    client.sendMessage(message, "Test")
 
   // message
 
@@ -135,4 +150,4 @@ client.on('message', msg => {
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('in your dreams bucko')
+client.login('Nope!')
