@@ -151,4 +151,4 @@ client.on('message', msg => {
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('MjY0Mjc1NzIxMTM4OTk1MjA1.C0h1qg.1XGscybUWwrr0KMlkhK5w5kz2UA')
+client.login('NOOOOOOOO')
