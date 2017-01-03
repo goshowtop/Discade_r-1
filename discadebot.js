@@ -34,6 +34,9 @@ Omanges, Please Please Please Don't Take This
 // Game Setter
 
 client.on('ready', () => {
+  
+  // sets game to 'NOV'
+  
   client.user.setGame('on NOV')
 
 
