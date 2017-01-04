@@ -11,6 +11,13 @@ const server = "Nights Of Valor"
 //invite link
 const invitelink = "https://discord.gg/4suNThV"
 
+
+
+/
+
+
+
+
 /* ^^ constants
 CaptainArc
 ONLY RECOMEND CHANGES WHEN THEY ARE ISSUES
@@ -54,11 +61,11 @@ client.on('ready', () => {
 
   // Logged In
 
-  console.log(`Logged in as ${client.user.username}!`);
+  console.log('Logged in as ${client.user.username}!');
 
   // Thank You
 
-  console.log(`Thank You for using DISCADE For ` + server);
+  console.log('Thank You for using DISCADE For ' + server);
 
   // end
 
@@ -136,7 +143,7 @@ client.on('message', msg => {
 
 // Text Chat
 
-  if (msg.content.startsWith("texthelp")) 
+  if (msg.content.startsWith(prefix + "texthelp")) 
 
     // Replys With Help
 
@@ -144,12 +151,24 @@ client.on('message', msg => {
 
 // Voice Help
 
-  if (msg.content.startsWith("voicehelp")) 
+  if (msg.content.startsWith(prefix + "voicehelp")) 
 
     // Replys With Help
 
     msg.reply('Voice Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404367-Voice-Chat');
+/*
+Add Command Format
 
+
+  if (msg.content.startsWith(prefix + "command")) 
+
+    // Replys With Msg
+
+    msg.reply('Message');
+
+*/
+  
+  
 });
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
