@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 //edit the prefix here
-const prefix = "!"
+const prefix = "-"
 
 //edit the server here
 const server = "Nights Of Valor"
@@ -11,11 +11,88 @@ const server = "Nights Of Valor"
 //invite link
 const invitelink = "https://discord.gg/4suNThV"
 
+const n1 = "weareno1 "
+var newUsers = new Discord.Collection();
+//Magic 8 Ball thing
 
 
-/
+const answers = ["99%", "Maybe.", "Certainly not.", "I hope so.", "Not in your wildest dreams.", "There is a good chance.", "Quite likely.", "I think so.", "I hope not.", "I hope so.", "Never!", "Fuhgeddaboudit.", "Ahaha! Really?!?", "Pfft.", "Sorry, bucko.", "Hell, yes.", "Hell, to the na na.", "The future is bleak.", "The future is uncertain.", "I would rather not say.", "Who cares?", "Possibly.", "Never, ever, ever.", "There is a small chance.", "Yes!", "99%", "I Would bet on it.", "like\nmy\nstyle?"];
+/*
+exports.run = (client, msg) => {
+  if (msg.content.endsWith("?")) {
+    msg.reply(`🎱 ${answers[Math.floor(Math.random() * answers.length)]}`).catch(err => client.funcs.log(err.stack, "error"));
+  } else {
+    msg.reply("🎱 That doesn't look like a question, try again please.").catch(err => client.funcs.log(err.stack, "error"));
+  }
+};
+
+exports.conf = {
+  enabled: true,
+  selfbot: false,
+  guildOnly: false,
+  aliases: ["8", "magic", "8ball", "mirror"],
+  permLevel: 0,
+  botPerms: [],
+  requiredFuncs: [],
+};
+
+exports.help = {
+  name: "magic8",
+  description: "Magic 8-Ball, does exactly what the toy does. (Results may vary)",
+  usage: "<query:str>",
+  usageDelim: "",
+};
 
 
+
+
+
+
+*/
+
+// lol
+client.on('guildMemberAdd', member => {
+  let guild = member.guild;
+  guild.defaultChannel.sendMessage(`Please welcome **${member.user.username}** to the **Nights of Valor!**!`);
+});
+client.on('guildMemberRemove', member => {
+  let guild = member.guild;
+  guild.defaultChannel.sendMessage(`Aww.. Player **${member.user.username}** has __Left__ **Nights of Valor!**!`);
+});
+
+
+
+
+
+/*   
+
+Closed. Will Be Added Soon!
+
+//NEW THINGS!
+const fs = require("fs");
+bot.on("message", message => {
+  if(!message.content.startsWith(prefix)) return;
+  if(message.author.bot) return;
+
+  let userData = points[message.author.id];
+  if(!userData) userData = {points: 0, level: 0};
+  userData.points++;
+
+  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));  
+  if(curLevel > userData.level) {
+    // Level up!
+    userData.level = curLevel;
+    message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
+  }
+
+  if(message.content.startsWith(prefix + "level")) {
+    message.reply(`You are currently level ${userData.level}, with ${userData.points} points.`);
+  }
+  fs.writeFile('./points.json', JSON.stringify(points), console.error);
+});
+*/
+// End of new things 
+// Credit elsachance!
 
 
 /* ^^ constants
@@ -36,23 +113,41 @@ ALL SCRIPTS INTENDED FOR THE NIGHTS OF VALOR SERVER ONLY
 Omanges, Please Please Please Don't Take This
 */
 
+/*
+Commands:
+
+!ping 
+test command
+
+!help
+recive help
+
+!smiles
+all the smiles
+
+*/
+
+/*
+Update Log!
+
+Game Display
+Auto Changing
+
+*/
+
 // Client Intro
 
 // Game Setter
 
+
 client.on('ready', () => {
-  
-  // sets game to 'NOV'
-  
-  client.user.setGame('on NOV')
-
-
-  // setgame message
-/*   FOR FUTURE MESSAGE (auto changing.) 
-  do{
-    client.user.setGame('on NOV')
-    } while (true)
-*/
+let games = ["on NOV", "discadebot.ml", "with Files", "with OG", "with OG's Wife.", "with Fire (Don't do it Kids!)", "Half-Life 3", "with Wires (Ouch!)", "with Krysllio", "with Things not allowed to be touched.", "Minecraft", "Overwatch", "Battlefield 1"];
+let counter = 0;
+setInterval(() => {
+client.user.setGame(games[counter]);
+counter++;
+if (counter > 3) counter = 0;
+}, 5000)
 });
 
 // Client Text
@@ -84,7 +179,6 @@ client.on("ready", () => {
 // Saying 'Ping' Will Respond 'Pong'
 
 client.on('message', msg => {
-
 // If Success
 
   if(msg.author.bot) return;
@@ -100,46 +194,41 @@ client.on('message', msg => {
 
 // pong 
 
-    msg.reply('Pong!');
+    msg.author.sendMessage('Pong!');
 
   }
 
-  //invites.
-  if (msg.content.startsWith(prefix + "invite") 
-    msg.reply("Here is the invite link: " + invitelink);
-  );
-// Help Content
-
-  if (msg.content.startsWith("help")) {
+  if (msg.content.startsWith(prefix + "help")) {
 
     // Replys with Intro Message
 
-    msg.reply('**Welcome' + server + 's Discord!**');
+    msg.author.sendMessage('**Welcome to ' + server + 's Discord!**');
 
 // Individual Help.
 
     // markdown help
 
-    msg.channel.sendMessage('To recive help with Discord Markdowns, Type `markdownhelp`.');
+    msg.author.sendMessage('To recive help with Discord Markdowns, Type `' + prefix + 'markdownhelp`.');
 
     // Voice help
 
-    msg.channel.sendMessage('To recive help with Discord Voice Chat, Type `voicehelp`.');
+    msg.author.sendMessage('To recive help with Discord Voice Chat, Type `' + prefix + 'voicehelp`.');
 
     // Text Help
 
-    msg.channel.sendMessage('To recive help with Discord Text Channels, Type `texthelp`.');
-
+    msg.author.sendMessage('To recive help with Discord Text Channels, Type `' + prefix + 'texthelp`.');
+    msg.author.sendMessage('To send funny gifs in Text Channels, Type `' + prefix + 'gif`.');
+    msg.author.sendMessage('To send funny smiles & lennys in Text Channels, Type `' + prefix + 'smiles`.');
+    msg.author.sendMessage('To send we are no. 1 memes in Text Channels, Type `' + prefix + 'weareno1`.');
   }
 
 // Markdown
 
-  if (msg.content.startsWith("markdownhelp")) 
-    client.sendMessage(message, "Test")
+  if (msg.content.startsWith(prefix + "markdownhelp")) 
 
   // message
 
-    msg.reply('Markdowns: ` *Italics* **Bold** ***Italic & Bold*** __Underline__ ~~Strikethrough~~ `');
+    msg.author.sendMessage('Markdowns: ` *Italics* **Bold** ***Italic & Bold*** __Underline__ ~~Strikethrough~~ `');
 
 // Text Chat
 
@@ -147,7 +236,7 @@ client.on('message', msg => {
 
     // Replys With Help
 
-    msg.reply('Text Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404368-Text-Chat');
+    msg.author.sendMessage('Text Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404368-Text-Chat');
 
 // Voice Help
 
@@ -155,16 +244,215 @@ client.on('message', msg => {
 
     // Replys With Help
 
-    msg.reply('Voice Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404367-Voice-Chat');
+    msg.author.sendMessage('Voice Chat help at Discords Website: https://support.discordapp.com/hc/en-us/categories/200404367-Voice-Chat');
+
+//emojis
+  if (msg.content.startsWith(prefix + "2flip")) 
+    // Replys With Msg
+    msg.channel.sendMessage('┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻');
+  if (msg.content.startsWith(prefix + "lenny")) 
+    // Replys With Msg
+    msg.channel.sendMessage('( ͡° ͜ʖ ͡°)');
+  if (msg.content.startsWith(prefix + "fix")) 
+    // Replys With Msg
+    msg.channel.sendMessage('┬─┬﻿ ノ( ゜-゜ノ)');
+  if (msg.content.startsWith(prefix + "madfix")) 
+    // Replys With Msg
+    msg.channel.sendMessage('┬─┬ノ(ಠ_ಠノ)');
+  if (msg.content.startsWith(prefix + "cat")) 
+    // Replys With Msg
+    msg.channel.sendMessage('ʢ◉ᴥ◉ʡ');
+  if (msg.content.startsWith(prefix + "happycat")) 
+    // Replys With Msg
+    msg.channel.sendMessage('( ✧ ᴥ ✧ )');
+  if (msg.content.startsWith(prefix + "boi")) 
+    // Replys With Msg
+    msg.channel.sendMessage('ಠ_ಠ');
+  if (msg.content.startsWith(prefix + "doh")) 
+    // Replys With Msg
+    msg.channel.sendMessage('ᗒ ͟ʖᗕ');
+  if (msg.content.startsWith(prefix + "nerd")) 
+    // Replys With Msg
+    msg.channel.sendMessage('(⌐■_■)');
+  if (msg.content.startsWith(prefix + "happy")) 
+    // Replys With Msg
+    msg.channel.sendMessage('^‿^');
+  if (msg.content.startsWith(prefix + "fightmeweak")) 
+    // Replys With Msg
+    msg.channel.sendMessage('(ง^‸^)ง');
+  if (msg.content.startsWith(prefix + "fightme")) 
+    // Replys With Msg
+    msg.channel.sendMessage('(ง • ⏠ • )ง');
+  if (msg.content.startsWith(prefix + "gtfo")) 
+    // Replys With Msg
+    msg.channel.sendMessage('ᕕ( ಠ ⍘ ಠ )ᕗ');
+  if (msg.content.startsWith(prefix + "smiles")) 
+    // Replys With Msg
+    msg.author.sendMessage('Here are the smiles: `2flip lenny fix madfix cat happycat boi doh nerd happy fightmeweak fightme gtfo` make sure to add a -');
+  if (msg.content.startsWith(prefix + "8ball")) 
+    // Replys With Msg
+    msg.reply(`🎱 ${answers[Math.floor(Math.random() * answers.length)]}`)
+
+   // gifs
+
+  if (msg.content.startsWith(prefix + "gif reported")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://giphy.com/gifs/valor-rengar-aqanybSxsr9cI ');
+  if (msg.content.startsWith(prefix + "gif shotsfired")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://giphy.com/gifs/graphic-warning-kill-uTCAwWNtz7U2c ');
+  if (msg.content.startsWith(prefix + "gif")) 
+    // Replys With Msg
+    msg.author.sendMessage('Gif List: `shotsfired` `reported` `shotsfired` `ban` `weareno1`');
+  if (msg.content.startsWith(prefix + "gif vapor")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://giphy.com/gifs/cq8CpzBHucBeE');
+  if (msg.content.startsWith(prefix + "gif ban")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://giphy.com/gifs/H99r2HtnYs492 ');
+  if (msg.content.startsWith(prefix + "gif weareno1")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://giphy.com/gifs/mrw-remix-number-GAEl25uunNnHi ');
+
+// We are Number One But 
+
+
+  if (msg.content.startsWith(prefix + n1 + "but when someone takes a step, they turn into a trumpet mr. skeletal")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=2GjYaZE9qn8');
+  if (msg.content.startsWith(prefix + n1 + "but instead of making any kind of logical sense, it doesnt")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=_oGEI31yfoc');
+  if (msg.content.startsWith(prefix + n1 + "but each layer of audio plays at a different speed")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=NBowZ22Je80');
+  if (msg.content.startsWith(prefix + n1 + "but every one disables instruments until theyre all disabled, after which every one triggers an instrument to play on its own. At the last one, all instruments are brought back but the vocals are removed.")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=NQLSiIU1eo8');
+  if (msg.content.startsWith(prefix + n1 + "but every one is a different genre")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=XxO5rAQGzjQ');
+  if (msg.content.startsWith(prefix + n1 + "but when the song starts every instrument is off tempo")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=68ESYJsxbC4');
+  if (msg.content.startsWith(prefix + n1 + "but its idubbbz")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=cVKQpr1pPjM');
+  if (msg.content.startsWith(prefix + n1 + "but its borked by gabe the dog")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=7dIetQFw-n4');
+  if (msg.content.startsWith(prefix + n1 + "but this is sparta")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=dJGCBNndLHc');
+  if (msg.content.startsWith(prefix + n1 + "but its poorly recreated with 3d cgi")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=LdrDLRmRlNk');
+  if (msg.content.startsWith(prefix + n1 + "but its portal 2")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=q2pQi5-x4dw');
+  if (msg.content.startsWith(prefix + n1 + "but the word one triggers duplication and makes the video slow down + get louder")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=txXQH978aug');
+  if (msg.content.startsWith(prefix + "weareno1")) 
+    //                                   list
+    msg.author.sendMessage(n1 + ' List: `but when someone takes a step, they turn into a trumpet mr. skeletal` | `but each layer of audio plays at a different speed` | `We are number one but every one disables instruments until theyre all disabled, after which every one triggers an instrument to play on its own. At the last one, all instruments are brought back but the vocals are removed.` | `but every one is a different genre` | `but when the song starts every instrument is off tempo` | `but its idubbbz` | `but its borked by gabe the dog` | `but this is sparta` | `but its poorly recreated with 3d cgi` | `but its portal 2` | `but the word one triggers duplication and makes the video slow down + get louder` | `plays four times and every one speeds them up by 10%`');
+  if (msg.content.startsWith(prefix + n1 + "easteregg")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=IdzI3tmvrCc');
+  if (msg.content.startsWith(prefix + n1 + "plays four times and every one speeds them up by 10%")) 
+    msg.channel.sendMessage('https://www.youtube.com/watch?v=Odf-s7hlDqg')
+    // Replys With Msg
+  // Credits
+  if (msg.content.startsWith(prefix + "credits")) 
+    // Replys With Msg
+    msg.channel.sendMessage('**Discade** `bot` is a bot by players <@241330918722109441> and <@232158121542418442>. The bot was originally made for server Nights of Valor. If you would like to help in the development of **Discade**, please PM us. (BarredGalaxy#6811 & CapitanArc#1973)');
+  if (msg.content.startsWith(prefix + "credit")) 
+    // Replys With Msg
+    msg.channel.sendMessage('**Discade** `bot` is a bot by players <@241330918722109441> and <@232158121542418442>. The bot was originally made for server Nights of Valor. If you would like to help in the development of **Discade**, please PM us. (BarredGalaxy#6811 & CapitanArc#1973)');    
+  if (msg.content.startsWith("bee")) 
+    // Replys With Msg
+    msg.channel.sendMessage('You like jazz?');
+  if (msg.content.startsWith("kys")) 
+    // Replys With Msg
+    msg.channel.sendMessage("Don't");
+  if (msg.content.startsWith("omanges")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Omanges is probably vaping RN soooo.....');
+  if (msg.content.startsWith("owners")) 
+    // Replys With Msg
+    msg.channel.sendMessage('These people are Crazy!');
+  if (msg.content.startsWith("2016")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Watch your mouth, kid.');
+  if (msg.content.startsWith("undertale")) 
+    // Replys With Msg
+    msg.channel.sendMessage("it's a beautiful day outside. birds are singing, flowers are blooming... on days like these, kids like you... \n`S h o u l d   b e   b u r n i n g   i n   h e l l . `");
+  if (msg.content.startsWith("trump")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Bing, Bing, Bong!');
+  if (msg.content.startsWith("pet1")) 
+    // Replys With Msg
+    msg.channel.sendMessage('You barely lifted your hand and Lesser Dog got excited.');
+  if (msg.content.startsWith("pet2")) 
+    // Replys With Msg
+    msg.channel.sendMessage("You lightly touched the Dog. It's already overexcited...");
+  if (msg.content.startsWith("pet3")) 
+    // Replys With Msg
+    msg.channel.sendMessage('You pet the Dog. It raises its head up to meet your hand.');
+  if (msg.content.startsWith("barredgalaxy")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Beep Beep. Barred `bot` Booting up...');
+  if (msg.content.startsWith("memes")) 
+    // Replys With Msg
+    msg.channel.sendMessage('two to the one to the one to the three');
+  if (msg.content.startsWith("dj khaled")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Anotha one.');
+  if (msg.content.startsWith("4chan")) 
+    // Replys With Msg
+    msg.channel.sendMessage('https://4chan.org/');
+  if (msg.content.startsWith("discade")) 
+    // Replys With Msg
+    msg.channel.sendMessage('http://discadebot.ml/');
+  if (msg.content.startsWith("discord")) 
+    // Replys With Msg
+    msg.channel.sendMessage('http://discordapp.com/');
+  if (msg.content.startsWith("krysllio")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Tech Support, How could I help you?');
+  if (msg.content.startsWith("jakes")) 
+    // Replys With Msg
+    msg.channel.sendMessage('A Developing Lizard Appears');
+  if (msg.content.startsWith("<@199834939863072778>")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Ｊ Ａ Ｋ Ｅ Ｓ    Ｔ Ｏ Ｒ Ｎ Ａ Ｄ Ｏ');
+  if (msg.content.startsWith("!rank")) 
+    // Replys With Msg
+    msg.channel.sendMessage('<@241330918722109441> is The **BEST!**');
+  if (msg.content.startsWith("<@265034938301022208>")) 
+    // Replys With Msg
+    msg.channel.sendMessage(":heart: The Best Developer! :heart: *that won't tell me how to color message.* (╯°□°）╯︵ ┻━┻");
+  if (msg.content.startsWith("(╯°□°）╯︵ ┻━┻")) 
+    // Replys With Msg
+    msg.channel.sendMessage('┬─┬﻿ ノ( ゜-゜ノ)');
+  if (msg.content.startsWith("Mmmm")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Player HelloImJake Detected.');
+  if (msg.content.startsWith("Mmm")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Player HelloImJake Detected.');
+  if (msg.content.startsWith("mmmm")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Player HelloImJake Detected.');
+  if (msg.content.startsWith("mmm")) 
+    // Replys With Msg
+    msg.channel.sendMessage('Player HelloImJake Detected.');
+
 /*
 Add Command Format
-
-
   if (msg.content.startsWith(prefix + "command")) 
-
     // Replys With Msg
-
-    msg.reply('Message');
+    msg.channel.sendMessage('Message');
 
 */
   
@@ -173,4 +461,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('NOOOOOOOO')
+client.login('I Dont Think so!')
