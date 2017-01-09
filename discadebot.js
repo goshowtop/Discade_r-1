@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 
-
 const client = new Discord.Client();
 
 //edit the prefix here
@@ -50,6 +49,13 @@ exports.help = {
 
 
 */
+
+
+
+
+
+
+
 
 // lol
 client.on('guildMemberAdd', member => {
@@ -139,8 +145,26 @@ Auto Changing
 // Client Intro
 
 // Game Setter
+//client.user.setAvatar('./avatar.png')
+
+/* Coming Soon **Buggy as ALL OF HELL**
+// cycle D I S C A D E './icons/d.png', './icons/i.png', './icons/s.jpg', './icons/c.jpg', './icons/a.png', './icons/d.png', './icons/e.png'
+// r/l './icons/right.png', './icons/left.png'
+
+// Avatar
+client.on('ready', () => {
+let games = ['./icons/right.png', './icons/left.png'];
+let counter = 0;
+setInterval(() => {
+client.user.setAvatar(games[counter]);
+counter++;
+if (counter > 3) counter = 0;
+}, 5000)
+});
+*/
 
 
+// SetGame
 client.on('ready', () => {
 let games = ["on NOV", "discadebot.ml", "with Files", "with OG", "with OG's Wife.", "with Fire (Don't do it Kids!)", "Half-Life 3", "with Wires (Ouch!)", "with Krysllio", "with Things not allowed to be touched.", "Minecraft", "Overwatch", "Battlefield 1"];
 let counter = 0;
@@ -154,6 +178,7 @@ if (counter > 3) counter = 0;
 // Client Text
 
 client.on('ready', () => {
+  client.user.setAvatar('./icons/avatar-normal.png')
 
   // Logged In
 
@@ -179,6 +204,7 @@ client.on("ready", () => {
 
 // Saying 'Ping' Will Respond 'Pong'
 
+
 client.on('message', msg => {
 // If Success
 
@@ -188,6 +214,24 @@ client.on('message', msg => {
     client.channel.sendMessage(msg.channel, "Move To #offtopic Please");
   }
 */  
+  if (msg.content.startsWith(prefix + "invite")) {
+    msg.reply("discord.gg/4suNThV Use It Wisely on Your Travels!")
+}
+  if (msg.content.startsWith(prefix + "asl")) {
+  let [age, sex, location] = msg.content.split(" ").slice(1);
+  msg.reply(`Hello ${msg.author.username}, I see you're a ${age} year old ${sex} from ${location}. Wanna date?`);
+}
+  if (msg.content === prefix + 'skinstealer') {
+    // send the user's avatar URL
+    msg.channel.sendMessage(msg.author.avatarURL);
+}
+  if (msg.content.startsWith(prefix + "kick")) {
+  // I'll make a code example on how to check if the user is allowed, one day!
+    let userToKick = msg.mentions.users.first();
+    //we need to get a *GuildMember* object, mentions are only users. Then, we kick!
+    msg.guild.member(userToKick).kick();
+  // see I even catch the error!
+}
 
 // ping
 
@@ -197,30 +241,6 @@ client.on('message', msg => {
 
     msg.author.sendMessage('Pong!');
 
-  }
-
-  if (msg.content.startsWith(prefix + "help")) {
-
-    // Replys with Intro Message
-
-    msg.author.sendMessage('**Welcome to ' + server + 's Discord!**');
-
-// Individual Help.
-
-    // markdown help
-
-    msg.author.sendMessage('To recive help with Discord Markdowns, Type `' + prefix + 'markdownhelp`.');
-
-    // Voice help
-
-    msg.author.sendMessage('To recive help with Discord Voice Chat, Type `' + prefix + 'voicehelp`.');
-
-    // Text Help
-
-    msg.author.sendMessage('To recive help with Discord Text Channels, Type `' + prefix + 'texthelp`.');
-    msg.author.sendMessage('To send funny gifs in Text Channels, Type `' + prefix + 'gif`.');
-    msg.author.sendMessage('To send funny smiles & lennys in Text Channels, Type `' + prefix + 'smiles`.');
-    msg.author.sendMessage('To send we are no. 1 memes in Text Channels, Type `' + prefix + 'weareno1`.');
   }
 
 // Markdown
@@ -427,9 +447,6 @@ client.on('message', msg => {
   if (msg.content.startsWith("<@199834939863072778>")) 
     // Replys With Msg
     msg.channel.sendMessage('Ｊ Ａ Ｋ Ｅ Ｓ    Ｔ Ｏ Ｒ Ｎ Ａ Ｄ Ｏ');
-  if (msg.content.startsWith("!rank")) 
-    // Replys With Msg
-    msg.channel.sendMessage('<@241330918722109441> is The **BEST!**');
   if (msg.content.startsWith("<@265034938301022208>")) 
     // Replys With Msg
     msg.channel.sendMessage(":heart: The Best Developer! :heart: *that won't tell me how to color message.* (╯°□°）╯︵ ┻━┻");
@@ -448,7 +465,104 @@ client.on('message', msg => {
   if (msg.content.startsWith("mmm")) 
     // Replys With Msg
     msg.channel.sendMessage('Player HelloImJake Detected.');
+  if (msg.content.startsWith(prefix + 'help'))
+    msg.channel.sendMessage("", {embed: {
+            color: 3398526,
+            author: {
+                 name: "Help Menu for Discade!",
+                icon_url: ""
+            },
+            description: "Need Help? i got you fam :wink:",
+            fields: [
+                {
+                    inline: true,
+                    name: "`-markdownhelp`",
+                    value: "Recive Help with Markdowns."
+                },
+                {
+                    inline: true,
+                    name: "`-voicehelp`",
+                    value: "Recive Help With Voice Channels."
+                },
+                {
+                    inline: true,
+                    name: "`-texthelp`",
+                    value: "Recive Help With Text Channels."
+                },
+                {
+                    inline: true,
+                    name: "`-gif`",
+                    value: "Just a Bunch of Random Gifs that I thought were Funny."
+                },
+                {
+                    inline: true,
+                    name: "`-smiles`",
+                    value: "Just a Bunch of Smiles. (Lennys)"
+                },
+                {
+                    inline: true,
+                    name: "`-weareno1`",
+                    value: "We Are Number Meme Selector.."
+                },       
+                {
+                    inline: true,
+                    name: "`-skinstealer`",
+                    value: "Steal Your Friend's Cool Discord Icon!"
+                },                           
+                {
+                    inline: true,
+                    name: "`-8ball`",
+                    value: "Have Fun With Discade's Magic 8 Ball!"
+                },     
+                {
+                    inline: true,
+                    name: "**More Coming Soon!**",
+                    value: "Watch For More Fun"
+                }     
 
+            ]
+        }});
+  if (msg.content.startsWith('embeded'))
+    msg.channel.sendMessage("", {embed: {
+            color: 2012323,
+            author: {
+                 name: "Like This!",
+                icon_url: ""
+            },
+            description: "",
+            fields: [
+            ]
+        }});
+// OWNER COMMANDS
+  if (msg.content.startsWith(prefix + "perms")) {
+    let modRole = message.guild.roles.find("Developer")
+    if(msg.member.roles.has(modRole)) {
+    // Replys With Msg
+      msg.channel.sendMessage("You've Got Permissions!");
+    } else {
+      msg.reply("**YOU FOOL!** *You Dont Have Permission.*")
+    }
+  }
+
+  if(msg.content.startsWith(prefix + "kick")) {
+    let modRole = message.guild.roles.find("Developer")
+    if(!msg.member.roles.has(modRole)) {
+
+      msg.reply("**YOU FOOL!** *You Dont Have Permission.*")
+    }
+    if(msg.mentions.users.size === 0) {
+      return msg.author.sendMessage("Please State a User to Kick.")
+    }
+    let kickMember = msg.guild.member(msg.mentions.users.first());
+    if(!kickMember)
+      return msg.author.sendMessage("Hmm. I Can't Find That User!")
+  }
+  if(!message.guild.member(client.user).hasPermission("KICK_MEMEBERS"))
+    return message.reply("I Cannot Kick Users.")
+  }
+  kickMember.kick().then(member => {
+    msg.reply('${member.user.username} Was Kicked From The Server.')
+ } 
 /*
 Add Command Format
   if (msg.content.startsWith(prefix + "command")) 
@@ -462,4 +576,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('I Dont Think so!')
+client.login('Put Token Here')
