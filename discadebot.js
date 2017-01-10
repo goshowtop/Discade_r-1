@@ -17,45 +17,6 @@ var newUsers = new Discord.Collection();
 
 
 const answers = ["99%", "Maybe.", "Certainly not.", "I hope so.", "Not in your wildest dreams.", "There is a good chance.", "Quite likely.", "I think so.", "I hope not.", "I hope so.", "Never!", "Fuhgeddaboudit.", "Ahaha! Really?!?", "Pfft.", "Sorry, bucko.", "Hell, yes.", "Hell, to the na na.", "The future is bleak.", "The future is uncertain.", "I would rather not say.", "Who cares?", "Possibly.", "Never, ever, ever.", "There is a small chance.", "Yes!", "99%", "I Would bet on it.", "like\nmy\nstyle?"];
-/*
-exports.run = (client, msg) => {
-  if (msg.content.endsWith("?")) {
-    msg.reply(`🎱 ${answers[Math.floor(Math.random() * answers.length)]}`).catch(err => client.funcs.log(err.stack, "error"));
-  } else {
-    msg.reply("🎱 That doesn't look like a question, try again please.").catch(err => client.funcs.log(err.stack, "error"));
-  }
-};
-
-exports.conf = {
-  enabled: true,
-  selfbot: false,
-  guildOnly: false,
-  aliases: ["8", "magic", "8ball", "mirror"],
-  permLevel: 0,
-  botPerms: [],
-  requiredFuncs: [],
-};
-
-exports.help = {
-  name: "magic8",
-  description: "Magic 8-Ball, does exactly what the toy does. (Results may vary)",
-  usage: "<query:str>",
-  usageDelim: "",
-};
-
-
-
-
-
-
-*/
-
-
-
-
-
-
-
 
 // lol
 client.on('guildMemberAdd', member => {
@@ -534,35 +495,34 @@ client.on('message', msg => {
             ]
         }});
 // OWNER COMMANDS
-  if (msg.content.startsWith(prefix + "perms")) {
-    let modRole = message.guild.roles.find("Developer")
-    if(msg.member.roles.has(modRole)) {
-    // Replys With Msg
-      msg.channel.sendMessage("You've Got Permissions!");
-    } else {
-      msg.reply("**YOU FOOL!** *You Dont Have Permission.*")
-    }
-  }
+  if (msg.content.startsWith(prefix + 'ts3'))
+    msg.channel.sendMessage("", {embed: {
+            color: 2012323,
+            author: {
+                 name: "Team Speak 3 Server.",
+                icon_url: "http://www.teamspeak.com/assets/logos/teamspeak_small.png"
+            },
+            description: "ts3.NightsOfValor.com",
+            fields: [
+            ]
+        }});
+  if (msg.content.startsWith(prefix + 'ip'))
+    msg.channel.sendMessage("", {embed: {
+            color: 2211545,
+            author: {
+                 name: "Minecraft Server IP.",
+                icon_url: "http://img10.deviantart.net/9cc9/i/2011/008/6/1/minecraft_hd_icon___mac___pc_by_hunterkharon-d36qrs5.png"
+            },
+            description: "play.NightsOfValor.com",
+            fields: [
+            ]
+        }});
 
-  if(msg.content.startsWith(prefix + "kick")) {
-    let modRole = message.guild.roles.find("Developer")
-    if(!msg.member.roles.has(modRole)) {
 
-      msg.reply("**YOU FOOL!** *You Dont Have Permission.*")
-    }
-    if(msg.mentions.users.size === 0) {
-      return msg.author.sendMessage("Please State a User to Kick.")
-    }
-    let kickMember = msg.guild.member(msg.mentions.users.first());
-    if(!kickMember)
-      return msg.author.sendMessage("Hmm. I Can't Find That User!")
-  }
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMEBERS"))
-    return message.reply("I Cannot Kick Users.")
-  }
-  kickMember.kick().then(member => {
-    msg.reply('${member.user.username} Was Kicked From The Server.')
- } 
+
+
+
+
 /*
 Add Command Format
   if (msg.content.startsWith(prefix + "command")) 
@@ -576,4 +536,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('Put Token Here')
+client.login('No, No, No!')
