@@ -60,11 +60,11 @@ exports.help = {
 // lol
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
-  guild.defaultChannel.sendMessage(`Please welcome **${member.user.username}** to the **Nights of Valor!**!`);
+  guild.defaultChannel.sendMessage(`Please welcome **${member.user.username}** to the **${msg.guild.name}**!`);
 });
 client.on('guildMemberRemove', member => {
   let guild = member.guild;
-  guild.defaultChannel.sendMessage(`Aww.. Player **${member.user.username}** has __Left__ **Nights of Valor!**!`);
+  guild.defaultChannel.sendMessage(`Aww.. Player **${member.user.username}** has __Left__ **${msg.guild.name}**!`);
 });
 
 
@@ -165,6 +165,7 @@ if (counter > 3) counter = 0;
 // let games = ["on NOV", "discadebot.ml", "with Files", "with OG", "with OG's Wife.", "with Fire (Don't do it Kids!)", "Half-Life 3", "with Wires (Ouch!)", "with Krysllio", "with Things not allowed to be touched.", "Minecraft", "Overwatch", "Battlefield 1"];
 
 // SetGame
+/*
 client.on('ready', () => {
 let games = ["Say -help"];
 let counter = 0;
@@ -174,6 +175,13 @@ counter++;
 if (counter > 3) counter = 0;
 }, 5000)
 });
+*/
+
+client.on('ready', () => {
+  client.user.setGame('Say -help', 'https://github.com/DiscadeBOT/Discade_r-1')
+});
+
+
 
 // Client Text
 
@@ -215,7 +223,7 @@ client.on('message', msg => {
   }
 */  
   if (msg.content.startsWith(prefix + "invite")) {
-    msg.reply("discord.gg/4suNThV Use It Wisely on Your Travels!")
+    msg.reply(" https://discord.gg/4suNThV Use It Wisely on Your Travels!")
 }
   if (msg.content.startsWith(prefix + "asl")) {
   let [age, sex, location] = msg.content.split(" ").slice(1);
@@ -223,8 +231,18 @@ client.on('message', msg => {
 }
   if (msg.content === prefix + 'skinstealer') {
     // send the user's avatar URL
-    msg.channel.sendMessage(msg.author.avatarURL);
+    msg.channel.sendMessage("indev"/*client.??*/);
 }
+/*
+// Kick a single user in the mention
+if (msg.content.startsWith(prefix + "skinstealer")) {
+  // I'll make a code example on how to check if the user is allowed, one day!
+    let userToKick = msg.mentions.users.first();
+    //we need to get a *GuildMember* object, mentions are only users. Then, we kick!
+    msg.guild.member.avatarURL((userToKick));
+  // see I even catch the error!
+}
+*/
   if (msg.content.startsWith(prefix + 'botstats'))
     msg.channel.sendMessage(" ", {embed: {
             color: 7013413,
@@ -588,4 +606,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('<token>')
+client.login('kthx NO')
