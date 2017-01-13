@@ -17,6 +17,45 @@ var newUsers = new Discord.Collection();
 
 
 const answers = ["99%", "Maybe.", "Certainly not.", "I hope so.", "Not in your wildest dreams.", "There is a good chance.", "Quite likely.", "I think so.", "I hope not.", "I hope so.", "Never!", "Fuhgeddaboudit.", "Ahaha! Really?!?", "Pfft.", "Sorry, bucko.", "Hell, yes.", "Hell, to the na na.", "The future is bleak.", "The future is uncertain.", "I would rather not say.", "Who cares?", "Possibly.", "Never, ever, ever.", "There is a small chance.", "Yes!", "99%", "I Would bet on it.", "like\nmy\nstyle?"];
+/*
+exports.run = (client, msg) => {
+  if (msg.content.endsWith("?")) {
+    msg.reply(`🎱 ${answers[Math.floor(Math.random() * answers.length)]}`).catch(err => client.funcs.log(err.stack, "error"));
+  } else {
+    msg.reply("🎱 That doesn't look like a question, try again please.").catch(err => client.funcs.log(err.stack, "error"));
+  }
+};
+
+exports.conf = {
+  enabled: true,
+  selfbot: false,
+  guildOnly: false,
+  aliases: ["8", "magic", "8ball", "mirror"],
+  permLevel: 0,
+  botPerms: [],
+  requiredFuncs: [],
+};
+
+exports.help = {
+  name: "magic8",
+  description: "Magic 8-Ball, does exactly what the toy does. (Results may vary)",
+  usage: "<query:str>",
+  usageDelim: "",
+};
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
 
 // lol
 client.on('guildMemberAdd', member => {
@@ -123,11 +162,11 @@ if (counter > 3) counter = 0;
 }, 5000)
 });
 */
-
+// let games = ["on NOV", "discadebot.ml", "with Files", "with OG", "with OG's Wife.", "with Fire (Don't do it Kids!)", "Half-Life 3", "with Wires (Ouch!)", "with Krysllio", "with Things not allowed to be touched.", "Minecraft", "Overwatch", "Battlefield 1"];
 
 // SetGame
 client.on('ready', () => {
-let games = ["on NOV", "discadebot.ml", "with Files", "with OG", "with OG's Wife.", "with Fire (Don't do it Kids!)", "Half-Life 3", "with Wires (Ouch!)", "with Krysllio", "with Things not allowed to be touched.", "Minecraft", "Overwatch", "Battlefield 1"];
+let games = ["Say -help"];
 let counter = 0;
 setInterval(() => {
 client.user.setGame(games[counter]);
@@ -186,13 +225,28 @@ client.on('message', msg => {
     // send the user's avatar URL
     msg.channel.sendMessage(msg.author.avatarURL);
 }
-  if (msg.content.startsWith(prefix + "kick")) {
-  // I'll make a code example on how to check if the user is allowed, one day!
-    let userToKick = msg.mentions.users.first();
-    //we need to get a *GuildMember* object, mentions are only users. Then, we kick!
-    msg.guild.member(userToKick).kick();
-  // see I even catch the error!
-}
+  if (msg.content.startsWith(prefix + 'botstats'))
+    msg.channel.sendMessage(" ", {embed: {
+            color: 7013413,
+            author: {
+                 name: "Bot Statistics",
+                icon_url: ""
+            },
+            description: "Bot Statistics... What do You Expect?",
+            fields: [
+                {
+                    inline: true,
+                    name: "Ping!",
+                    value: client.ping + "ms"
+                },
+                {
+                    inline: true,
+                    name: "Uptime!",
+                    value: [Math.floor((client.uptime / 1000) / 60)] + "m"
+                }
+
+            ]
+        }});
 
 // ping
 
@@ -201,6 +255,7 @@ client.on('message', msg => {
 // pong 
 
     msg.author.sendMessage('Pong!');
+    msg.channel.sendMessage('');
 
   }
 
@@ -348,9 +403,6 @@ client.on('message', msg => {
   if (msg.content.startsWith(prefix + "credits")) 
     // Replys With Msg
     msg.channel.sendMessage('**Discade** `bot` is a bot by players <@241330918722109441> and <@232158121542418442>. The bot was originally made for server Nights of Valor. If you would like to help in the development of **Discade**, please PM us. (BarredGalaxy#6811 & CapitanArc#1973)');
-  if (msg.content.startsWith(prefix + "credit")) 
-    // Replys With Msg
-    msg.channel.sendMessage('**Discade** `bot` is a bot by players <@241330918722109441> and <@232158121542418442>. The bot was originally made for server Nights of Valor. If you would like to help in the development of **Discade**, please PM us. (BarredGalaxy#6811 & CapitanArc#1973)');    
   if (msg.content.startsWith("bee")) 
     // Replys With Msg
     msg.channel.sendMessage('You like jazz?');
@@ -536,4 +588,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('No, No, No!')
+client.login('<token>')
