@@ -25,7 +25,6 @@ exports.run = (client, msg) => {
     msg.reply("🎱 That doesn't look like a question, try again please.").catch(err => client.funcs.log(err.stack, "error"));
   }
 };
-
 exports.conf = {
   enabled: true,
   selfbot: false,
@@ -35,19 +34,12 @@ exports.conf = {
   botPerms: [],
   requiredFuncs: [],
 };
-
 exports.help = {
   name: "magic8",
   description: "Magic 8-Ball, does exactly what the toy does. (Results may vary)",
   usage: "<query:str>",
   usageDelim: "",
 };
-
-
-
-
-
-
 */
 
 
@@ -72,26 +64,21 @@ client.on('guildMemberRemove', member => {
 
 
 /*   
-
 Closed. Will Be Added Soon!
-
 //NEW THINGS!
 const fs = require("fs");
 bot.on("message", message => {
   if(!message.content.startsWith(prefix)) return;
   if(message.author.bot) return;
-
   let userData = points[message.author.id];
   if(!userData) userData = {points: 0, level: 0};
   userData.points++;
-
   let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));  
   if(curLevel > userData.level) {
     // Level up!
     userData.level = curLevel;
     message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
   }
-
   if(message.content.startsWith(prefix + "level")) {
     message.reply(`You are currently level ${userData.level}, with ${userData.points} points.`);
   }
@@ -122,24 +109,18 @@ Omanges, Please Please Please Don't Take This
 
 /*
 Commands:
-
 !ping 
 test command
-
 !help
 recive help
-
 !smiles
 all the smiles
-
 */
 
 /*
 Update Log!
-
 Game Display
 Auto Changing
-
 */
 
 // Client Intro
@@ -150,8 +131,7 @@ Auto Changing
 /* Coming Soon **Buggy as ALL OF HELL**
 // cycle D I S C A D E './icons/d.png', './icons/i.png', './icons/s.jpg', './icons/c.jpg', './icons/a.png', './icons/d.png', './icons/e.png'
 // r/l './icons/right.png', './icons/left.png'
-
-// Avatar
+// Avatar 
 client.on('ready', () => {
 let games = ['./icons/right.png', './icons/left.png'];
 let counter = 0;
@@ -185,12 +165,14 @@ client.on('ready', () => {
 
 // Client Text
 
-client.on('ready', () => {
-  client.user.setAvatar('./icons/avatar-normal.png')
 
+client.on('ready', () => {
+/*
+  client.user.setAvatar('./icons/avatar-normal.png')
+*/
   // Logged In
 
-  console.log('Logged in as ${client.user.username}!');
+  console.log('Logged in as ' + client.user.username);
 
   // Thank You
 
@@ -199,7 +181,6 @@ client.on('ready', () => {
   // end
 
 });
-
 // Start-up
 
 client.on("ready", () => {
@@ -271,10 +252,7 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
   if (msg.content.startsWith(prefix + "ping")) {
 
 // pong 
-
-    msg.author.sendMessage('Pong!');
-    msg.channel.sendMessage('');
-
+    msg.channel.sendMessage("My Current Ping Is " + client.ping + "ms, " + msg.author.username + "!" + guildMember.nickname);
   }
 
 // Markdown
@@ -598,7 +576,6 @@ Add Command Format
   if (msg.content.startsWith(prefix + "command")) 
     // Replys With Msg
     msg.channel.sendMessage('Message');
-
 */
   
   
@@ -606,4 +583,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('kthx NO')
+client.login('no no no no no no no no')
