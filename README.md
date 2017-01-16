@@ -1,5 +1,5 @@
 # Discade
-Discade Bot.
+Discade Bot: A foward bot for servers who want a __Better bot__.
 
 # Dependencies
 This Bot has Two Dependencies. *At Discade, We try to make the bot more 'All-in-One' so it is easier and faster.*
