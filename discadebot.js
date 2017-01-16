@@ -13,6 +13,7 @@ const invitelink = "https://discord.gg/4suNThV"
 
 const n1 = "weareno1 "
 var newUsers = new Discord.Collection();
+const fs = require("fs");
 
 
 
@@ -20,27 +21,30 @@ var newUsers = new Discord.Collection();
           Idea Area!
  = User Crates. (open a crate every minute and it has a random ammount of xp )
 */
-//NEW THINGS!
-const fs = require("fs");
-bot.on("message", message => {
+let points = JSON.parse(fs.readFileSync('./points.json', 'utf8'));
+client.on("ready", () => {
+  console.log('Points Operational.')
+});
+client.on("message", message => {
   if(!message.content.startsWith(prefix)) return;
   if(message.author.bot) return;
+
+  if(!points[message.author.id]) points[message.author.id] = {points: 0, level: 0};
   let userData = points[message.author.id];
-  if(!userData) userData = {points: 0, level: 0};
   userData.points++;
+
   let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));  
-  if(curLevel > userData.level) {
+  if(curLevel > userData.points) {
     // Level up!
     userData.level = curLevel;
-    message.reply(`You've leveled up to level **${curLevel}**!`);
+    message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
   }
-  if(message.content.startsWith(prefix + "level")) {
-    message.reply(`You are currently level ${userData.level}, with ${userData.points} points.`);
+
+  if(message.content.startsWith(prefix + "points")) {
+    message.reply(`You Currently Have ${userData.points} points.`);
   }
-  fs.writeFile('./points.json', JSON.stringify(points));
+  fs.writeFile('./points.json', JSON.stringify(points), (err) => {if(err) console.error(err)});
 });
-
-
 //Magic 8 Ball thing
 
 
@@ -69,7 +73,6 @@ exports.help = {
   usageDelim: "",
 };
 */
-
 
 
 
@@ -135,34 +138,6 @@ Auto Changing
 // Game Setter
 //client.user.setAvatar('./avatar.png')
 
-/* Coming Soon **Buggy as ALL OF HELL**
-// cycle D I S C A D E './icons/d.png', './icons/i.png', './icons/s.jpg', './icons/c.jpg', './icons/a.png', './icons/d.png', './icons/e.png'
-// r/l './icons/right.png', './icons/left.png'
-// Avatar 
-client.on('ready', () => {
-let games = ['./icons/right.png', './icons/left.png'];
-let counter = 0;
-setInterval(() => {
-client.user.setAvatar(games[counter]);
-counter++;
-if (counter > 3) counter = 0;
-}, 5000)
-});
-*/
-// let games = ["on NOV", "discadebot.ml", "with Files", "with OG", "with OG's Wife.", "with Fire (Don't do it Kids!)", "Half-Life 3", "with Wires (Ouch!)", "with Krysllio", "with Things not allowed to be touched.", "Minecraft", "Overwatch", "Battlefield 1"];
-
-// SetGame
-/*
-client.on('ready', () => {
-let games = ["Say -help"];
-let counter = 0;
-setInterval(() => {
-client.user.setGame(games[counter]);
-counter++;
-if (counter > 3) counter = 0;
-}, 5000)
-});
-*/
 
 client.on('ready', () => {
   client.user.setGame('Say ' + prefix + 'help')
@@ -202,6 +177,7 @@ client.on("ready", () => {
 
 
 client.on('message', msg => {
+
 // If Success
 
   if(msg.author.bot) return;
@@ -231,6 +207,7 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
   // see I even catch the error!
 }
 */
+
   if (msg.content.startsWith(prefix + 'botstats'))
     msg.channel.sendMessage(" ", {embed: {
             color: 7013413,
@@ -243,7 +220,7 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
                 {
                     inline: true,
                     name: "Ping!",
-                    value: client.ping + "ms"
+                    value: Math.round(msg.client.ping) + "ms"
                 },
                 {
                     inline: true,
@@ -259,7 +236,7 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
   if (msg.content.startsWith(prefix + "ping")) {
 
 // pong 
-    msg.channel.sendMessage("My Current Ping Is " + client.ping + "ms, " + msg.author.username + "!" + guildMember.nickname);
+    msg.channel.sendMessage("My Current Ping Is " + Math.round(msg.client.ping) + "ms, " + msg.author.username + "!");
   }
 
 // Markdown
@@ -590,4 +567,4 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('no no no no no no no no')
+client.login('your think im dumb??')
