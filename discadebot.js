@@ -13,6 +13,34 @@ const invitelink = "https://discord.gg/4suNThV"
 
 const n1 = "weareno1 "
 var newUsers = new Discord.Collection();
+
+
+
+/*
+          Idea Area!
+ = User Crates. (open a crate every minute and it has a random ammount of xp )
+*/
+//NEW THINGS!
+const fs = require("fs");
+bot.on("message", message => {
+  if(!message.content.startsWith(prefix)) return;
+  if(message.author.bot) return;
+  let userData = points[message.author.id];
+  if(!userData) userData = {points: 0, level: 0};
+  userData.points++;
+  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));  
+  if(curLevel > userData.level) {
+    // Level up!
+    userData.level = curLevel;
+    message.reply(`You've leveled up to level **${curLevel}**!`);
+  }
+  if(message.content.startsWith(prefix + "level")) {
+    message.reply(`You are currently level ${userData.level}, with ${userData.points} points.`);
+  }
+  fs.writeFile('./points.json', JSON.stringify(points));
+});
+
+
 //Magic 8 Ball thing
 
 
@@ -63,28 +91,7 @@ client.on('guildMemberRemove', member => {
 
 
 
-/*   
-Closed. Will Be Added Soon!
-//NEW THINGS!
-const fs = require("fs");
-bot.on("message", message => {
-  if(!message.content.startsWith(prefix)) return;
-  if(message.author.bot) return;
-  let userData = points[message.author.id];
-  if(!userData) userData = {points: 0, level: 0};
-  userData.points++;
-  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));  
-  if(curLevel > userData.level) {
-    // Level up!
-    userData.level = curLevel;
-    message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
-  }
-  if(message.content.startsWith(prefix + "level")) {
-    message.reply(`You are currently level ${userData.level}, with ${userData.points} points.`);
-  }
-  fs.writeFile('./points.json', JSON.stringify(points), console.error);
-});
-*/
+
 // End of new things 
 // Credit elsachance!
 
@@ -158,7 +165,7 @@ if (counter > 3) counter = 0;
 */
 
 client.on('ready', () => {
-  client.user.setGame('Say -help', 'https://github.com/DiscadeBOT/Discade_r-1')
+  client.user.setGame('Say ' + prefix + 'help')
 });
 
 
@@ -212,7 +219,7 @@ client.on('message', msg => {
 }
   if (msg.content === prefix + 'skinstealer') {
     // send the user's avatar URL
-    msg.channel.sendMessage("indev"/*client.??*/);
+    msg.channel.sendMessage("`" + prefix + "skinstealer` is currently in development. Please wait for this feature to arrive"/*client.??*/);
 }
 /*
 // Kick a single user in the mention
