@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
-bot.login("MjY5MjY1MzAzMTk4ODkyMDMz.C1xTgw.n3VasOVSZJGVwJh0sVVCz3qGSOE");
+bot.login("no");
 
 let points = JSON.parse(fs.readFileSync('./points.json', 'utf8'));
 const prefix = "-";
