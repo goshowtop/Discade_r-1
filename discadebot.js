@@ -207,7 +207,39 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
   // see I even catch the error!
 }
 */
+  if (msg.content.startsWith(prefix + "calc")) {
+  let [what, pro, pro2] = msg.content.split(" ").slice(1);
+  if (what === "m")
+    msg.channel.sendMessage(Math.floor((pro) * (pro2)) + ", " + msg.author.username + "!");
+  if (what === "d")
+    msg.channel.sendMessage(Math.floor((pro) / (pro2)) + ", " + msg.author.username + "!");
+  if (what === "a")
+    msg.channel.sendMessage(Math.floor((pro) + (pro2)) + ", " + msg.author.username + "!");
+  if (what === "s")
+    msg.channel.sendMessage(Math.floor((pro) - (pro2)) + ", " + msg.author.username + "!");
+  if (what === "")
+    msg.channel.sendMessage("Please Enter Your Method. (Example: `-calculator m 1 1` `m` for multiplication, 1 1 for `1x1`.)");
 
+
+
+
+
+}
+  if (msg.content.startsWith(prefix + 'airhorn'))
+    msg.member.voiceChannel.join()
+     .then(connection => {
+       msg.channel.sendMessage(':arrow_forward: Playing `Airhorn Sound`')
+       connection.playFile('./Audio/airhorn.mp3')
+       client.setTimeout(1)
+     })
+ .catch(console.error);
+
+
+
+  if (msg.content.startsWith(prefix + "purge")) {
+    msg.reply('???')
+    msg.author.sweepMessages(100)
+}
   if (msg.content.startsWith(prefix + 'botstats'))
     msg.channel.sendMessage(" ", {embed: {
             color: 7013413,
@@ -306,9 +338,9 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
   if (msg.content.startsWith(prefix + "smiles")) 
     // Replys With Msg
     msg.author.sendMessage('Here are the smiles: `2flip lenny fix madfix cat happycat boi doh nerd happy fightmeweak fightme gtfo` make sure to add a -');
-  if (msg.content.startsWith(prefix + "8ball")) 
+  if (msg.content.startsWith(prefix + "askant")) 
     // Replys With Msg
-    msg.reply(`🎱 ${answers[Math.floor(Math.random() * answers.length)]}`)
+    msg.reply(`:ant: ${answers[Math.floor(Math.random() * answers.length)]}`)
 
    // gifs
 
@@ -504,8 +536,8 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
                 },                           
                 {
                     inline: true,
-                    name: "`-8ball`",
-                    value: "Have Fun With Discade's Magic 8 Ball!"
+                    name: "`-askant`",
+                    value: "Have Fun With Discade's Super Knowledgable ant!!"
                 },     
                 {
                     inline: true,
@@ -554,7 +586,6 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
 
 
 
-
 /*
 Add Command Format
   if (msg.content.startsWith(prefix + "command")) 
@@ -567,4 +598,7 @@ Add Command Format
 
 // TOKEN CLIENT ((The Bot's Soul (Password)))
 
-client.login('your think im dumb??')
+client.login('no no no no')
+/*
+https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=setTimeout
+*/
