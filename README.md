@@ -30,3 +30,9 @@ Stuff About CPU:
 Stuff About CPU:
 ####Operating System
 *Running Rasbain "Jessie"*
+##Error Fixes:
+###Console Logs 'SyntaxError: Enexpected end of JSON input.'
+-open 'points.json'.
+-it should be empty.
+-Add a {} to the file. 
+-Run the File
