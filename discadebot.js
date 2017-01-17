@@ -601,4 +601,5 @@ Add Command Format
 client.login('no no no no')
 /*
 https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=setTimeout
+setTimeout(() => do something, 1)
 */
