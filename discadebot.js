@@ -197,6 +197,17 @@ client.on('message', msg => {
     // send the user's avatar URL
     msg.channel.sendMessage("`" + prefix + "skinstealer` is currently in development. Please wait for this feature to arrive"/*client.??*/);
 }
+  if (msg.content.startsWith(prefix + "mc-user")) {
+  let [username] = msg.content.split(" ").slice(1);
+    msg.channel.sendMessage(" ", {embed: {
+            color: 709360,
+            author: {
+                 name: "User Info For ${username}.",
+                icon_url: "https://mcapi.ca/avatar/${username}"
+            },
+            description: "Bot Statistics... What do You Expect?",
+        }});
+}
 /*
 // Kick a single user in the mention
 if (msg.content.startsWith(prefix + "skinstealer")) {
@@ -570,6 +581,7 @@ if (msg.content.startsWith(prefix + "skinstealer")) {
             fields: [
             ]
         }});
+  
   if (msg.content.startsWith(prefix + 'ip'))
     msg.channel.sendMessage("", {embed: {
             color: 2211545,
