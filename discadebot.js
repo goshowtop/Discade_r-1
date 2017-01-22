@@ -136,6 +136,11 @@ client.on('message', msg => {
                 },     
                 {
                     inline: true,
+                    name: "`-movie`",
+                    value: "Emoji Movies!"
+                },  
+                {
+                    inline: true,
                     name: "**More Coming Soon!**",
                     value: "Watch For More Fun"
                 }     
@@ -163,7 +168,51 @@ client.on('message', msg => {
             fields: [
             ]
         }});
-  
+  if (msg.content.startsWith(prefix + 'edit-test'))
+    msg.channel.sendMessage('dance').then(sent => {
+      setTimeout(() => sent.edit(':point_down:'), 10) 
+      setTimeout(() => sent.edit(':point_up:'), 10)
+      setTimeout(() => sent.edit(':point_down:'), 10)
+      setTimeout(() => sent.edit(':point_up:'), 10)
+      setTimeout(() => sent.edit(':point_down:'), 10) 
+      setTimeout(() => sent.edit(':point_up:'), 10)
+      setTimeout(() => sent.edit(':point_down:'), 10)
+      setTimeout(() => sent.edit(':point_up:'), 10)
+      setTimeout(() => sent.edit(':point_down:'), 10) 
+      setTimeout(() => sent.edit(':point_up:'), 10)
+      setTimeout(() => sent.edit(':point_down:'), 10)
+      setTimeout(() => sent.edit(':point_up:'), 10)
+    });
+  if (msg.content.startsWith(prefix + "movie")) {
+  let [movie, pro, pro2] = msg.content.split(" ").slice(1);
+  if (movie === "scroll")
+    msg.channel.sendMessage('movie loading.').then(sent => {
+      setTimeout(() => sent.edit('Scrolling Text!'), 25) 
+      setTimeout(() => sent.edit(':regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t: :regional_indicator_e: :regional_indicator_x: :regional_indicator_t: '), 25)
+      setTimeout(() => sent.edit(':white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t: :regional_indicator_e: :regional_indicator_x: '), 25)
+      setTimeout(() => sent.edit(':white_large_square: :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t: :regional_indicator_e: '), 25)
+      setTimeout(() => sent.edit(':white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:'), 25) 
+      setTimeout(() => sent.edit(':regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: '), 25)
+      setTimeout(() => sent.edit(':regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i:'), 25) 
+      setTimeout(() => sent.edit(':white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: '), 25)
+      setTimeout(() => sent.edit(':regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: :regional_indicator_r:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s: :regional_indicator_c: '), 25)
+      setTimeout(() => sent.edit(':regional_indicator_l:  :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square: :regional_indicator_s:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_o: :regional_indicator_l:  :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:  :white_large_square:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_r: :regional_indicator_o: :regional_indicator_l:  :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square: :white_large_square:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l:  :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t:  :regional_indicator_e:  :regional_indicator_x: :regional_indicator_t: :white_large_square:'), 25)
+      setTimeout(() => sent.edit(':regional_indicator_s: :regional_indicator_c: :regional_indicator_r: :regional_indicator_o: :regional_indicator_l: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_g: :white_large_square: :regional_indicator_t: :regional_indicator_e: :regional_indicator_x: :regional_indicator_t: '), 25)
+    });
+    msg.channel.sendMessage('movie loading.').then(sent => {
+      setTimeout(() => sent.edit('S'), 30) 
+    });
+  if (movie === "")
+    msg.channel.sendMessage("Movies: `scroll`, ");
+}
   if (msg.content.startsWith(prefix + 'ip'))
     msg.channel.sendMessage("", {embed: {
             color: 2211545,
@@ -175,7 +224,7 @@ client.on('message', msg => {
             fields: [
             ]
         }});
-  if (msg.content.startsWith(prefix + "trump")) 
+  if (msg.content.includes("trump")) 
     msg.react('👎');
   if (msg.content.startsWith(prefix + 'rules'))
     msg.channel.sendMessage(" ", {embed: {
@@ -184,23 +233,18 @@ client.on('message', msg => {
                  name: "Rules!",
                 icon_url: ""
             },
-            description: "NOV Rules. You Better Follow 'em!",
-            fields: [
-                {
-                    inline: true,
-                    name: "Ping!",
-                    value: ""
-                },
-                {
-                    inline: true,
-                    name: "Uptime!",
-                    value: [Math.floor((client.uptime / 1000) / 60)] + "m"
-                }
-            ]
+            description: "http://nightsofvalor.com/rules",
         }});
+  if (msg.content.startsWith(prefix + 'mute')) {
+  	if(msg.mentions.users.size === 0) {
+  	  return msg.reply('Mention Someone you Pleb.')
+  	}
+  	let muteMember = msg.guild.member(msg.mentions.users.first());
+  	if(!muteMember) {
+      return msg.reply('what...? add a mention pls')
+    }
+    let has_mute = msg.member.hasPermission("MUTE_MEMBERS");
+    msg.reply('indev')
+  }
 });
-client.on('message', msg => {
-  if (msg.content.startsWith(prefix + 'eval'))
-    if(msg.author.id !== "241330918722109441") return;
-});
-client.login('token')
+client.login('<token_here>')
