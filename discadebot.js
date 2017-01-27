@@ -23,7 +23,33 @@ client.on('ready', () => {
   console.log('Client is Ready!')
   client.user.setGame('Say ' + prefix + 'help')
 });
-//Messages
+//points
+let points = JSON.parse(fs.readFileSync('./points.json', 'utf8'));
+client.on("message", msg => {
+  if(!msg.content.startsWith(prefix)) return;
+  if(msg.author.bot) return;
+
+  if(!points[msg.author.id]) points[msg.author.id] = {points: 0, level: 0};
+  let userData = points[msg.author.id];
+  userData.points++;
+
+  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));  
+  if(curLevel > userData.points) {
+    // Level up!
+    userData.level = curLevel;
+    msg.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
+  }
+
+  if(msg.content.startsWith(prefix + "points")) {
+  let [what, pro, pro2] = msg.content.split(" ").slice(1);
+  if (what === "bal")
+    msg.channel.sendMessage(" ");
+  if (what === "help")
+    msg.channel.sendMessage(" ");
+    }
+  fs.writeFile('./points.json', JSON.stringify(points), (err) => {if(err) console.error(err)});
+});
+//messages
 client.on('message', msg => {
   if(msg.author.bot) return;
   if (msg.content.startsWith(prefix + "invite")) {
@@ -236,15 +262,15 @@ client.on('message', msg => {
             description: "http://nightsofvalor.com/rules",
         }});
   if (msg.content.startsWith(prefix + 'mute')) {
-  	if(msg.mentions.users.size === 0) {
-  	  return msg.reply('Mention Someone you Pleb.')
-  	}
-  	let muteMember = msg.guild.member(msg.mentions.users.first());
-  	if(!muteMember) {
+    if(msg.mentions.users.size === 0) {
+      return msg.reply('Mention Someone you Pleb.')
+    }
+    let muteMember = msg.guild.member(msg.mentions.users.first());
+    if(!muteMember) {
       return msg.reply('what...? add a mention pls')
     }
     let has_mute = msg.member.hasPermission("MUTE_MEMBERS");
     msg.reply('indev')
   }
 });
-client.login('<token_here>')
+client.login('<damn>')
