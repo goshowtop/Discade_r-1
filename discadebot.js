@@ -276,4 +276,4 @@ client.on('message', msg => {
     msg.reply('indev')
   }
 });
-client.login('MjcxODE3MTQwMzEzNTIyMTc2.C2xYdA.FTbrA7viY8yjXqWL6knJOp5_Wrc')
+client.login('NO')
