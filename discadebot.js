@@ -7,6 +7,7 @@ const invitelink = "https://discord.gg/4suNThV"
 const n1 = "weareno1 "
 var newUsers = new Discord.Collection();
 const fs = require("fs");
+const playercards = ["BarredGalaxy [*50%*]", "BarredGalaxy [*50%*]", "BarredGalaxy [*50%*]", "GalaxyIsBroken [*5%*]", "Omanges [*1%*]", "BluePandaDragon [*2%*]", "Neterkun [*10%*]", "Prxncey [*14%*]", "Desstie [*10%*]"];
 const answers = ["99%", "Maybe.", "Certainly not.", "I hope so.", "Not in your wildest dreams.", "There is a good chance.", "Quite likely.", "I think so.", "I hope not.", "I hope so.", "Never!", "Fuhgeddaboudit.", "Ahaha! Really?!?", "Pfft.", "Sorry, bucko.", "Hell, yes.", "Hell, to the na na.", "The future is bleak.", "The future is uncertain.", "I would rather not say.", "Who cares?", "Possibly.", "Never, ever, ever.", "There is a small chance.", "Yes!", "99%", "I Would bet on it."];
 /*Listeners*/
 //Add&leave
@@ -51,6 +52,8 @@ client.on("message", msg => {
 });
 //messages
 client.on('message', msg => {
+  if (msg.content.startsWith(prefix + "crate")) 
+    msg.reply(`You Have Won a ${playercards[Math.floor(Math.random() * playercards.length)]}`)
   if(msg.author.bot) return;
   if (msg.content.startsWith(prefix + "invite")) {
     msg.reply(" https://discord.gg/4suNThV Use It Wisely on Your Travels!")
